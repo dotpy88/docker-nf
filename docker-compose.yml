@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  dockerflow:
+    image: dockerflow:v1
+    build: .
+    restart: always
+    working_dir: /artifacts/nfsen
+    ports:
+      - 80:80
+      - 9996:9996/udp
+      - 9997:9997/udp
+    volumes:
+#      - /opt/nfsen:/opt/nfsen:rw
+#      - ./artifacts:/artifacts:rw
+      - ./test:/opt/nfsen:rw
+    entrypoint: ../entrypoint.sh
+    command: /usr/sbin/apache2ctl -DFOREGROUND
