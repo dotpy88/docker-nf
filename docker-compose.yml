@@ -12,5 +12,5 @@ services:
     volumes:
 #      - /opt/nfsen:/opt/nfsen:rw
       - ./test:/opt/nfsen:rw
-    entrypoint: ../entrypoint.sh
+    entrypoint: /artifacts/entrypoint.sh
     command: /usr/sbin/apache2ctl -DFOREGROUND

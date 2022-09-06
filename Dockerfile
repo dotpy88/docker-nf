@@ -72,3 +72,6 @@ RUN mv ${ARTIFACTS}/apache-nfsen.conf /etc/apache2/sites-enabled/000-default.con
 #Create netflow user and assign to www-data group
 RUN adduser -u 5678 --disabled-password --gecos "" netflow \
     && usermod -G www-data netflow
+
+#Make entrypoint executable
+RUN chmod +x ${ARTIFACTS}/entrypoint.sh
