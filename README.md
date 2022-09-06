@@ -12,3 +12,7 @@ docker compose up -d
 To stop - 
 docker compose down
 
+View nfsen graphs - 
+http://127.0.0.1:80
+
+
