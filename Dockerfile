@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-#Variables for install
+#Variables used during build
 ARG DEBIAN_FRONTEND=noninteractive
 ARG NFSEN_VERSION=1.3.8
 ARG NFDUMP_VERSION=1.6.24
@@ -9,7 +9,7 @@ ARG ARTIFACTS=/artifacts
 ARG NFDUMP_FOLDER=${ARTIFACTS}/nfdump
 ARG NFSEN_FOLDER=${ARTIFACTS}/nfsen
 
-#Add required files
+#Add required files to build
 ADD conf ${ARTIFACTS}
 
 #Install required packages
@@ -59,8 +59,10 @@ RUN wget https://sourceforge.net/projects/nfsen/files/stable/nfsen-${NFSEN_VERSI
     && tar -xzf nfsen-${NFSEN_VERSION}.tar.gz \
     && mv nfsen-${NFSEN_VERSION} ${NFSEN_FOLDER} \
     && sed -i -re "s|rrd_version < 1.6|rrd_version < 1.8|g" ${NFSEN_FOLDER}/libexec/NfSenRRD.pm \
-    && mv ${ARTIFACTS}/nfsen.conf ${NFSEN_FOLDER}/etc/nfsen.conf \
-    && mv ${ARTIFACTS}/apache-nfsen.conf /etc/apache2/sites-enabled/000-default.conf \
+    && mv ${ARTIFACTS}/nfsen.conf ${NFSEN_FOLDER}/etc/nfsen.conf
+
+#Other actions to perform in build
+RUN mv ${ARTIFACTS}/apache-nfsen.conf /etc/apache2/sites-enabled/000-default.conf \
     && echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf \
     && echo "$TIMEZONE" > /etc/timezone \
     && sed -i -re "s|;date.timezone.*|date.timezone = $TIMEZONE|g" /etc/php/7.4/apache2/php.ini \
