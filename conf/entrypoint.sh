@@ -34,5 +34,9 @@ fi
 echo "Starting Nfsen service"
 /opt/nfsen/bin/nfsen start
 echo "Nfsen service is now started"
+# Starting apache
+echo "Starting apache"
+service apache2 start
+echo "Apache is started"
 
 exec "$@"

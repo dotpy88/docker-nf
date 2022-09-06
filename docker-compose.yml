@@ -13,4 +13,4 @@ services:
 #      - /opt/nfsen:/opt/nfsen:rw
       - ./test:/opt/nfsen:rw
     entrypoint: /artifacts/entrypoint.sh
-    command: /usr/sbin/apache2ctl -DFOREGROUND
+    command: tail -f /var/log/syslog

@@ -15,4 +15,8 @@ docker compose down
 View nfsen graphs - 
 http://127.0.0.1/nfsen/nfsen.php
 
+If you need to organize flows by source IP then install the conntrack package and run the following on Docker host after container startup (docker bug https://github.com/moby/moby/issues/8795) -
+
+sudo conntrack -D -p udp
+
 
