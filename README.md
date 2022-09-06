@@ -1,6 +1,6 @@
 # docker-nf
 
-This is a netflow/sflow collector using nfdump and nfsen. 
+This is a netflow/sflow collector/analyzer using nfdump and nfsen. 
 
 You need to set the volume in the docker-compose.yml file to a valid location on the docker host.  (You can create a "test" directory in the same path as this repo to try it out)
 
