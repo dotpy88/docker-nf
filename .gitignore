@@ -1,2 +1,4 @@
-/test/
-vu-nfsen.conf
+**/test/
+**/vu-nfsen.conf
+**/vu-apache-nfsen.conf
+**/.env

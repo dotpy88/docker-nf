@@ -35,7 +35,10 @@ echo "Starting Nfsen service"
 /opt/nfsen/bin/nfsen start
 echo "Nfsen service is now started"
 # Starting apache
+echo "Enabling ldap mod"
+a2enmod authnz_ldap
 echo "Starting apache"
+#service apache2 start
 service apache2 start
 echo "Apache is started"
 
