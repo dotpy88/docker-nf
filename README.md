@@ -19,6 +19,4 @@ If you need to organize flows by source IP then install the conntrack package an
 
 sudo conntrack -D -p udp
 
-source conf/.env (prior to building)
-
 
