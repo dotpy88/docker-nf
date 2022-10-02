@@ -66,6 +66,8 @@ RUN mv ${ARTIFACTS}/apache-nfsen.conf /etc/apache2/sites-enabled/000-default.con
     && echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf \
     && echo "LDAPVerifyServerCert Off" >> /etc/apache2/apache2.conf \
     && sed -i -re "s|Require all granted|Require all denied|g" /etc/apache2/apache2.conf \
+    && openssl req -x509 -nodes -days 1825 -config ${ARTIFACTS}/apache-csr.conf -newkey rsa:2048 \
+          -keyout ${ARTIFACTS}/apache-selfsigned.key -out ${ARTIFACTS}/apache-selfsigned.crt \
     && echo "$TIMEZONE" > /etc/timezone \
     && sed -i -re "s|;date.timezone.*|date.timezone = $TIMEZONE|g" /etc/php/7.4/apache2/php.ini \
     && rm /etc/localtime && dpkg-reconfigure -f noninteractive tzdata \

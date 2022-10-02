@@ -37,6 +37,8 @@ echo "Nfsen service is now started"
 # Starting apache
 echo "Enabling ldap mod"
 a2enmod authnz_ldap
+echo "Enabling SSL"
+a2enmod ssl
 echo "Starting apache"
 #service apache2 start
 service apache2 start

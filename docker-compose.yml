@@ -7,6 +7,7 @@ services:
     working_dir: /artifacts/nfsen
     ports:
       - 80:80
+      - 443:443
       - 9996:9996/udp
       - 9997:9997/udp
     volumes:
